@@ -1,2 +1,42 @@
+# Byte-compiled / cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django stuff:
+*.db
+*.sqlite3
+media/
+staticfiles/
+
+# Environment variables
+.env
+.env.*
+
+# VSCode and IDEs
+.vscode/
+.idea/
+
+# Node
+node_modules/
+
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store
+*.swp
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
 myvenv
 venv
+.venv
