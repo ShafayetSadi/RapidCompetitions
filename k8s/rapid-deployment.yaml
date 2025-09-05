@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rapid-app
+  namespace: production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rapid-app
+  template:
+    metadata:
+      labels:
+        app: rapid-app
+    spec:
+      containers:
+        - name: rapid
+          image: docker.io/shafayetsadi/rapidcompetitions:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: SECRET_KEY
+              value: hello-world
+            - name: DEBUG
+              value: "0"
+            - name: ALLOWED_HOSTS
+              value: "*"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rapid-service
+  namespace: production
+spec:
+  type: NodePort
+  selector:
+    app: rapid-app
+  ports:
+    - port: 8000
+      targetPort: 8000
+      nodePort: 30080
+      protocol: TCP
